@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using FancyStoreDemo.DataRepositories.Common;
 using FancyStoreDemo.Models;
 using Newtonsoft.Json;
@@ -14,8 +15,14 @@ namespace FancyStoreDemo.DataRepositories.AppDataFiles
 		{
 		private string BaseAppDataPath { get; set; }
 		private const string ProductsFolderName = "Products";
-		public AppDataFilesStoreRepository(string AppDataPath)
+		public AppDataFilesStoreRepository()
 			{
+			BaseAppDataPath = HttpContext.Current.Server.MapPath("~/App_Data");
+			var productsFolder = Path.Combine(BaseAppDataPath, ProductsFolderName);
+			if (!Directory.Exists(productsFolder))
+				{
+				Directory.CreateDirectory(productsFolder);
+				}
 			}
 		public void Initialize()
 			{
@@ -48,19 +55,19 @@ namespace FancyStoreDemo.DataRepositories.AppDataFiles
 			}
 		public void AddNewProduct(Product product)
 			{
-			var file = Path.Combine(BaseAppDataPath, ProductsFolderName, product.Id.ToString(), ".json");
+			var file = Path.Combine(BaseAppDataPath, ProductsFolderName, product.Id.ToString() + ".json");
 			var json = JsonConvert.SerializeObject(product);
 			File.WriteAllText(file, json);
 			}
 		public void UpdateProduct(Product product)
 			{
-			var file = Path.Combine(BaseAppDataPath, ProductsFolderName, product.Id.ToString(), ".json");
+			var file = Path.Combine(BaseAppDataPath, ProductsFolderName, product.Id.ToString() + ".json");
 			var json = JsonConvert.SerializeObject(product);
 			File.WriteAllText(file, json);
 			}
 		public void DeleteProduct(int id)
 			{
-			var file = Path.Combine(BaseAppDataPath, ProductsFolderName, id.ToString(), ".json");
+			var file = Path.Combine(BaseAppDataPath, ProductsFolderName, id.ToString() + ".json");
 			File.Delete(file);
 			}
 		}

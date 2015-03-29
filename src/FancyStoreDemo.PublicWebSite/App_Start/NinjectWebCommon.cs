@@ -23,8 +23,8 @@ namespace FancyStoreDemo.PublicWebSite.App_Start
 		/// <param name="kernel">The kernel.</param>
 		private static void RegisterServices(IKernel kernel)
 			{
-			//kernel.Bind<IStoreRepository>().To<AppDataFilesStoreRepository>();
-			kernel.Bind<IStoreRepository>().To<InMemoryStoreRepository>().InSingletonScope();
+			kernel.Bind<IStoreRepository>().To<AppDataFilesStoreRepository>();
+			//kernel.Bind<IStoreRepository>().To<InMemoryStoreRepository>().InSingletonScope();
 			//kernel.Bind<IStoreRepository>().To<MongoStoreRepository>();
 			//kernel.Bind<IStoreRepository>().To<OracleStoreRepository>();
 			//kernel.Bind<IStoreRepository>().To<SqlLiteStoreRepository>();
