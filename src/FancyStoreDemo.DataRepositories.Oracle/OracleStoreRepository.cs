@@ -19,11 +19,33 @@ namespace FancyStoreDemo.DataRepositories.Oracle
 			ConnectionString = connectionString;
 			}
 
+		private bool ProductsTableExists()
+			{
+			var command = new OracleCommand("SELECT table_name FROM user_tables where lower(table_name)=:name");
+			command.BindByName = true;
+			command.Parameters.Add("name", "products");
+			var dt = OracleDatabaseHelpers.GetDataTable(command, ConnectionString);
+			if (dt.Rows.Count > 0) return true; else return false;
+			}
+
 		public void Initialize()
 			{
-			throw new NotImplementedException();
-			OracleCommand command = new OracleCommand("create table products ()");
-			OracleDatabaseHelpers.ExecuteNonQuery(command, ConnectionString);
+			if (!ProductsTableExists())
+				{
+				var command = new OracleCommand("create table products (id integer, name varchar2(60), description varchar2(500), price number)");
+				OracleDatabaseHelpers.ExecuteNonQuery(command, ConnectionString);
+				}
+			}
+
+		private Product GenerateProductFromDataRow(DataRow row)
+			{
+			return new Product()
+			{
+				Id = Convert.ToInt32(row.Field<decimal>("id")),
+				Name = row.Field<string>("name"),
+				Description = row.Field<string>("description"),
+				Price = Convert.ToDouble(row.Field<decimal>("price"))
+			};
 			}
 
 		public Product GetProductById(int id)
@@ -32,26 +54,14 @@ namespace FancyStoreDemo.DataRepositories.Oracle
 			command.Parameters.Add("id", id);
 			command.BindByName = true; //not stricly necessary but if had more than one parameter this helps avoid confusion. True is also the default for MS System.Data.Sql
 			var dt = OracleDatabaseHelpers.GetDataTable(command, ConnectionString);
-			return dt.AsEnumerable().Select(r => new Product()
-			{
-				Id = r.Field<int>("id"),
-				Name = r.Field<string>("name"),
-				Description = r.Field<string>("description"),
-				Price = r.Field<double>("price")
-			}).Single();
+			return dt.AsEnumerable().Select(r => GenerateProductFromDataRow(r)).Single();
 			}
 
 		public List<Product> GetAllProducts()
 			{
 			var command = new OracleCommand("select id, name, description, price from products");
 			var dt = OracleDatabaseHelpers.GetDataTable(command, ConnectionString);
-			return dt.AsEnumerable().Select(r => new Product()
-			{
-				Id = r.Field<int>("id"),
-				Name = r.Field<string>("name"),
-				Description = r.Field<string>("description"),
-				Price = r.Field<double>("price")
-			}).ToList();
+			return dt.AsEnumerable().Select(r => GenerateProductFromDataRow(r)).ToList();
 			}
 
 		public void AddNewProduct(Product product)

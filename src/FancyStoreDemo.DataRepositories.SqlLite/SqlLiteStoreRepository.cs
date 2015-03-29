@@ -36,31 +36,30 @@ namespace FancyStoreDemo.DataRepositories.SqlLite
 				}
 			}
 
+		private Product GenerateProductFromDataRow(DataRow row)
+			{
+			return new Product()
+				{
+					Id = Convert.ToInt32(row.Field<long>("id")),
+					Name = row.Field<string>("name"),
+					Description = row.Field<string>("description"),
+					Price = row.Field<double>("price")
+				};
+			}
+
 		public Product GetProductById(int id)
 			{
 			var command = new SQLiteCommand("select id, name, description, price from products where id=:id");
 			command.Parameters.AddWithValue("id", id);
 			var dt = SqlLiteDatabaseHelpers.GetDataTable(command, ConnectionString);
-			return dt.AsEnumerable().Select(r => new Product()
-			{
-				Id = r.Field<int>("id"),
-				Name = r.Field<string>("name"),
-				Description = r.Field<string>("description"),
-				Price = r.Field<double>("price")
-			}).Single();
+			return dt.AsEnumerable().Select(r => GenerateProductFromDataRow(r)).Single();
 			}
 
 		public List<Product> GetAllProducts()
 			{
 			var command = new SQLiteCommand("select id, name, description, price from products");
 			var dt = SqlLiteDatabaseHelpers.GetDataTable(command, ConnectionString);
-			return dt.AsEnumerable().Select(r => new Product()
-			{
-				Id = Convert.ToInt32(r.Field<long>("id")),
-				Name = r.Field<string>("name"),
-				Description = r.Field<string>("description"),
-				Price = r.Field<double>("price")
-			}).ToList();
+			return dt.AsEnumerable().Select(r => GenerateProductFromDataRow(r)).ToList();
 			}
 
 		public void AddNewProduct(Product product)

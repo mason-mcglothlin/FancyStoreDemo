@@ -25,11 +25,12 @@ namespace FancyStoreDemo.PublicWebSite.App_Start
 		private static void RegisterServices(IKernel kernel)
 			{
 			//kernel.Bind<IStoreRepository>().To<AppDataFilesStoreRepository>();
-			//kernel.Bind<IStoreRepository>().To<InMemoryStoreRepository>().InSingletonScope();
-			//kernel.Bind<IStoreRepository>().ToMethod<MongoStoreRepository>(c => new MongoStoreRepository(ConfigurationManager.ConnectionStrings["MongoDB"].ConnectionString));
-			//kernel.Bind<IStoreRepository>().To<OracleStoreRepository>();
-			new SqlLiteStoreRepository(ConfigurationManager.ConnectionStrings["SQLite"].ConnectionString).Initialize();
-			kernel.Bind<IStoreRepository>().ToMethod<SqlLiteStoreRepository>(c => new SqlLiteStoreRepository(ConfigurationManager.ConnectionStrings["SQLite"].ConnectionString));
+			kernel.Bind<IStoreRepository>().To<InMemoryStoreRepository>().InSingletonScope();
+			//kernel.Bind<IStoreRepository>().ToMethod(c => new MongoStoreRepository(ConfigurationManager.ConnectionStrings["MongoDB"].ConnectionString));
+			//new OracleStoreRepository(ConfigurationManager.ConnectionStrings["Oracle"].ConnectionString).Initialize();
+			//kernel.Bind<IStoreRepository>().ToMethod(c => new OracleStoreRepository(ConfigurationManager.ConnectionStrings["Oracle"].ConnectionString));
+			//new SqlLiteStoreRepository(ConfigurationManager.ConnectionStrings["SQLite"].ConnectionString).Initialize();
+			//kernel.Bind<IStoreRepository>().ToMethod(c => new SqlLiteStoreRepository(ConfigurationManager.ConnectionStrings["SQLite"].ConnectionString));
 			}
 
 		#region Boilerplate Ninject
