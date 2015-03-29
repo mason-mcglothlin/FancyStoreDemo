@@ -4,6 +4,10 @@ Currently, any of the following storage mechanisms can be used:
 
  - In Memory
  - SQLite
- - JSON files
+ - Loose JSON files
  - MongoDB
  - Oracle (untested)
+ - MS SQL Server (planned)
+ - RavenDb (planned)
+ - Loose XML files (planned)
+ - MySQL (planned)
