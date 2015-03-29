@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FancyStoreDemo.DataReposito
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FancyStoreDemo.DataRepositories.InMemory", "FancyStoreDemo.DataRepositories.InMemory\FancyStoreDemo.DataRepositories.InMemory.csproj", "{D31B149F-5EE2-4177-9445-A81FDC77EAF3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FancyStoreDemo.PublicWebSite", "FancyStoreDemo.PublicWebSite\FancyStoreDemo.PublicWebSite.csproj", "{F99EFA80-5042-4155-AF0F-BE974C2FE9E7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{D31B149F-5EE2-4177-9445-A81FDC77EAF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D31B149F-5EE2-4177-9445-A81FDC77EAF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D31B149F-5EE2-4177-9445-A81FDC77EAF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F99EFA80-5042-4155-AF0F-BE974C2FE9E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F99EFA80-5042-4155-AF0F-BE974C2FE9E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F99EFA80-5042-4155-AF0F-BE974C2FE9E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F99EFA80-5042-4155-AF0F-BE974C2FE9E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

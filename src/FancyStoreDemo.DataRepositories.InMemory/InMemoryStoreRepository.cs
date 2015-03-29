@@ -12,12 +12,22 @@ namespace FancyStoreDemo.DataRepositories.InMemory
 		{
 		private Dictionary<int, Product> Products { get; set; }
 
+		public InMemoryStoreRepository()
+			{
+			Products = new Dictionary<int, Product>();
+			}
+
 		public void Initialize()
 			{
 			}
 		public Product GetProductById(int id)
 			{
 			return Products[id];
+			}
+
+		public List<Product> GetAllProducts()
+			{
+			return Products.Values.ToList();
 			}
 
 		public void AddNewProduct(Product product)

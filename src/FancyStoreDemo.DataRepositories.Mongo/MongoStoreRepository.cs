@@ -33,6 +33,13 @@ namespace FancyStoreDemo.DataRepositories.Mongo
 			return db.GetCollection<Product>("Products").AsQueryable<Product>().Where(p => p.Id == id).Single();
 			}
 
+		public List<Product> GetAllProducts()
+			{
+			var client = new MongoClient(ConnectionString);
+			var db = client.GetServer().GetDatabase("FancyStore");
+			return db.GetCollection<Product>("Products").FindAll().ToList();
+			}
+
 		public void AddNewProduct(Product product)
 			{
 			var client = new MongoClient(ConnectionString);

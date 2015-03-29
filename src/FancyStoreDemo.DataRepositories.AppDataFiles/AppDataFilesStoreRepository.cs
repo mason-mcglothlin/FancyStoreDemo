@@ -34,6 +34,18 @@ namespace FancyStoreDemo.DataRepositories.AppDataFiles
 				return null;
 				}
 			}
+		public List<Product> GetAllProducts()
+			{
+			var folder = Path.Combine(BaseAppDataPath, ProductsFolderName);
+			var products = new List<Product>();
+			foreach (var file in Directory.EnumerateFiles(folder))
+				{
+				var json = File.ReadAllText(file);
+				var product = JsonConvert.DeserializeObject<Product>(json);
+				products.Add(product);
+				}
+			return products;
+			}
 		public void AddNewProduct(Product product)
 			{
 			var file = Path.Combine(BaseAppDataPath, ProductsFolderName, product.Id.ToString(), ".json");

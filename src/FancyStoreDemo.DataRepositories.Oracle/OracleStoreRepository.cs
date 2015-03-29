@@ -41,6 +41,19 @@ namespace FancyStoreDemo.DataRepositories.Oracle
 			}).Single();
 			}
 
+		public List<Product> GetAllProducts()
+			{
+			var command = new OracleCommand("select id, name, description, price from products");
+			var dt = OracleDatabaseHelpers.GetDataTable(command, ConnectionString);
+			return dt.AsEnumerable().Select(r => new Product()
+			{
+				Id = r.Field<int>("id"),
+				Name = r.Field<string>("name"),
+				Description = r.Field<string>("description"),
+				Price = r.Field<double>("price")
+			}).ToList();
+			}
+
 		public void AddNewProduct(Product product)
 			{
 			var command = new OracleCommand("insert into products (id, name, description, price) values (:id, :name, :description, :price)");

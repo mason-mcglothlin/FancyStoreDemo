@@ -11,6 +11,8 @@ namespace FancyStoreDemo.DataRepositories.Common
 		{
 		Product GetProductById(int id);
 
+		List<Product> GetAllProducts();
+
 		void AddNewProduct(Product product);
 
 		void UpdateProduct(Product product);
