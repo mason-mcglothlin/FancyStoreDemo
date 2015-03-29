@@ -26,9 +26,10 @@ namespace FancyStoreDemo.PublicWebSite.App_Start
 			{
 			//kernel.Bind<IStoreRepository>().To<AppDataFilesStoreRepository>();
 			//kernel.Bind<IStoreRepository>().To<InMemoryStoreRepository>().InSingletonScope();
-			kernel.Bind<IStoreRepository>().To<MongoStoreRepository>().WithConstructorArgument("connectionString", ConfigurationManager.ConnectionStrings["MongoDB"].ConnectionString);
+			//kernel.Bind<IStoreRepository>().ToMethod<MongoStoreRepository>(c => new MongoStoreRepository(ConfigurationManager.ConnectionStrings["MongoDB"].ConnectionString));
 			//kernel.Bind<IStoreRepository>().To<OracleStoreRepository>();
-			//kernel.Bind<IStoreRepository>().To<SqlLiteStoreRepository>();
+			new SqlLiteStoreRepository(ConfigurationManager.ConnectionStrings["SQLite"].ConnectionString).Initialize();
+			kernel.Bind<IStoreRepository>().ToMethod<SqlLiteStoreRepository>(c => new SqlLiteStoreRepository(ConfigurationManager.ConnectionStrings["SQLite"].ConnectionString));
 			}
 
 		#region Boilerplate Ninject

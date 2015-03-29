@@ -19,11 +19,21 @@ namespace FancyStoreDemo.DataRepositories.SqlLite
 			ConnectionString = connectionString;
 			}
 
+		private bool ProductsTableExists()
+			{
+			var command = new SQLiteCommand("SELECT name FROM sqlite_master WHERE type='table' AND name=:name");
+			command.Parameters.AddWithValue("name", "products");
+			var dt = SqlLiteDatabaseHelpers.GetDataTable(command, ConnectionString);
+			if (dt.Rows.Count > 0) return true; else return false;
+			}
+
 		public void Initialize()
 			{
-			throw new NotImplementedException();
-			var command = new SQLiteCommand("create table products ()");
-			SqlLiteDatabaseHelpers.ExecuteNonQuery(command, ConnectionString);
+			if (!ProductsTableExists())
+				{
+				var command = new SQLiteCommand("create table products (id integer, name text, description text, price real)");
+				SqlLiteDatabaseHelpers.ExecuteNonQuery(command, ConnectionString);
+				}
 			}
 
 		public Product GetProductById(int id)
@@ -46,7 +56,7 @@ namespace FancyStoreDemo.DataRepositories.SqlLite
 			var dt = SqlLiteDatabaseHelpers.GetDataTable(command, ConnectionString);
 			return dt.AsEnumerable().Select(r => new Product()
 			{
-				Id = r.Field<int>("id"),
+				Id = Convert.ToInt32(r.Field<long>("id")),
 				Name = r.Field<string>("name"),
 				Description = r.Field<string>("description"),
 				Price = r.Field<double>("price")

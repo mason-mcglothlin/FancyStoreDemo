@@ -194,3 +194,5 @@ FakesAssemblies/
 
 # Visual Studio 6 workspace options file
 *.opt
+/src/FancyStoreDemo.PublicWebSite/App_Data/Products
+/src/FancyStoreDemo.PublicWebSite/App_Data
