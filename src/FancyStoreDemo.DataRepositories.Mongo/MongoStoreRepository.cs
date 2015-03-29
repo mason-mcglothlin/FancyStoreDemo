@@ -15,6 +15,18 @@ namespace FancyStoreDemo.DataRepositories.Mongo
 	public class MongoStoreRepository : IStoreRepository
 		{
 		private string ConnectionString { get; set; }
+		private const string DatabaseName = "FancyStore";
+
+		private MongoDatabase GetDatabase()
+			{
+			var client = new MongoClient(ConnectionString);
+			return client.GetServer().GetDatabase(DatabaseName);
+			}
+
+		private MongoCollection<Product> GetProductsCollection()
+			{
+			return GetDatabase().GetCollection<Product>("Products");
+			}
 
 		public MongoStoreRepository(string connectionString)
 			{
@@ -28,34 +40,27 @@ namespace FancyStoreDemo.DataRepositories.Mongo
 
 		public Product GetProductById(int id)
 			{
-			var client = new MongoClient(ConnectionString);
-			var db = client.GetServer().GetDatabase("FancyStore");
-			return db.GetCollection<Product>("Products").AsQueryable<Product>().Where(p => p.Id == id).Single();
+			return GetProductsCollection().AsQueryable<Product>().Where(p => p.Id == id).Single();
 			}
 
 		public List<Product> GetAllProducts()
 			{
-			var client = new MongoClient(ConnectionString);
-			var db = client.GetServer().GetDatabase("FancyStore");
-			return db.GetCollection<Product>("Products").FindAll().ToList();
+			return GetProductsCollection().FindAll().ToList();
 			}
 
 		public void AddNewProduct(Product product)
 			{
-			var client = new MongoClient(ConnectionString);
-			var db = client.GetServer().GetDatabase("FancyStore");
-			db.GetCollection<Product>("Products").Insert(product);
+			GetProductsCollection().Insert(product);
 			}
 
 		public void UpdateProduct(Product product)
 			{
-			var client = new MongoClient(ConnectionString);
-			var db = client.GetServer().GetDatabase("FancyStore");
-			db.GetCollection<Product>("Products").Save(product);
+			GetProductsCollection().Save(product);
 			}
 
-		public void DeleteProduct(int id) { var client = new MongoClient(ConnectionString);
-			var db = client.GetServer().GetDatabase("FancyStore");
-			db.GetCollection<Product>("Products").Remove(Query<Product>.EQ(p => p.Id, id));}
+		public void DeleteProduct(int id)
+			{
+			GetProductsCollection().Remove(Query<Product>.EQ(p => p.Id, id));
+			}
 		}
 	}
