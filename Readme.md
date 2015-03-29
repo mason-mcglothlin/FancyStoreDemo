@@ -6,4 +6,4 @@ Currently, any of the following storage mechanisms can be used:
  - SQLite
  - JSON files
  - MongoDB
- - Oracle (in progress)
+ - Oracle (untested)
