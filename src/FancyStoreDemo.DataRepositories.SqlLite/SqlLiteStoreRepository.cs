@@ -39,5 +39,32 @@ namespace FancyStoreDemo.DataRepositories.SqlLite
 				Price = r.Field<double>("price")
 			}).Single();
 			}
+
+		public void AddNewProduct(Product product)
+			{
+			var command = new SQLiteCommand("insert into products (id, name, description, price) values (:id, :name, :description, :price)");
+			command.Parameters.AddWithValue("id", product.Id);
+			command.Parameters.AddWithValue("name", product.Name);
+			command.Parameters.AddWithValue("description", product.Description);
+			command.Parameters.AddWithValue("price", product.Price);
+			SqlLiteDatabaseHelpers.ExecuteNonQuery(command, ConnectionString);
+			}
+
+		public void UpdateProduct(Product product)
+			{
+			var command = new SQLiteCommand("update products set name=:name, description=:description, price=:price where id=:id");
+			command.Parameters.AddWithValue("id", product.Id);
+			command.Parameters.AddWithValue("name", product.Name);
+			command.Parameters.AddWithValue("description", product.Description);
+			command.Parameters.AddWithValue("price", product.Price);
+			SqlLiteDatabaseHelpers.ExecuteNonQuery(command, ConnectionString);
+			}
+
+		public void DeleteProduct(int id)
+			{
+			var command = new SQLiteCommand("delete from products where id=:id");
+			command.Parameters.AddWithValue("id", id);
+			SqlLiteDatabaseHelpers.ExecuteNonQuery(command, ConnectionString);
+			}
 		}
 	}

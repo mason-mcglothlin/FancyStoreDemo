@@ -1,1 +1,1 @@
-To do: update readme
+This project is intended to be a demonstration of how to properly follow separation of concerns in a ASP.NET application, particularly Web Forms.

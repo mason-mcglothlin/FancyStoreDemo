@@ -22,11 +22,10 @@ namespace FancyStoreDemo.DataRepositories.AppDataFiles
 			}
 		public Product GetProductById(int id)
 			{
-			var productsFolder = Path.Combine(BaseAppDataPath, ProductsFolderName);
-			var filename = Path.Combine(productsFolder, id.ToString(), ".json");
-			if (File.Exists(filename))
+			var file = Path.Combine(BaseAppDataPath, ProductsFolderName, id.ToString(), ".json");
+			if (File.Exists(file))
 				{
-				var json = File.ReadAllText(filename);
+				var json = File.ReadAllText(file);
 				var product = JsonConvert.DeserializeObject<Product>(json);
 				return product;
 				}
@@ -34,6 +33,23 @@ namespace FancyStoreDemo.DataRepositories.AppDataFiles
 				{
 				return null;
 				}
+			}
+		public void AddNewProduct(Product product)
+			{
+			var file = Path.Combine(BaseAppDataPath, ProductsFolderName, product.Id.ToString(), ".json");
+			var json = JsonConvert.SerializeObject(product);
+			File.WriteAllText(file, json);
+			}
+		public void UpdateProduct(Product product)
+			{
+			var file = Path.Combine(BaseAppDataPath, ProductsFolderName, product.Id.ToString(), ".json");
+			var json = JsonConvert.SerializeObject(product);
+			File.WriteAllText(file, json);
+			}
+		public void DeleteProduct(int id)
+			{
+			var file = Path.Combine(BaseAppDataPath, ProductsFolderName, id.ToString(), ".json");
+			File.Delete(file);
 			}
 		}
 	}

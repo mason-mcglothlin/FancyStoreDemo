@@ -40,5 +40,35 @@ namespace FancyStoreDemo.DataRepositories.Oracle
 				Price = r.Field<double>("price")
 			}).Single();
 			}
+
+		public void AddNewProduct(Product product)
+			{
+			var command = new OracleCommand("insert into products (id, name, description, price) values (:id, :name, :description, :price)");
+			command.BindByName = true;
+			command.Parameters.Add("id", product.Id);
+			command.Parameters.Add("name", product.Name);
+			command.Parameters.Add("description", product.Description);
+			command.Parameters.Add("price", product.Price);
+			OracleDatabaseHelpers.ExecuteNonQuery(command, ConnectionString);
+			}
+
+		public void UpdateProduct(Product product)
+			{
+			var command = new OracleCommand("update products set name=:name, description=:description, price=:price where id=:id");
+			command.BindByName = true;
+			command.Parameters.Add("id", product.Id);
+			command.Parameters.Add("name", product.Name);
+			command.Parameters.Add("description", product.Description);
+			command.Parameters.Add("price", product.Price);
+			OracleDatabaseHelpers.ExecuteNonQuery(command, ConnectionString);
+			}
+
+		public void DeleteProduct(int id)
+			{
+			var command = new OracleCommand("delete from products where id=:id");
+			command.BindByName = true;
+			command.Parameters.Add("id", id);
+			OracleDatabaseHelpers.ExecuteNonQuery(command, ConnectionString);
+			}
 		}
 	}

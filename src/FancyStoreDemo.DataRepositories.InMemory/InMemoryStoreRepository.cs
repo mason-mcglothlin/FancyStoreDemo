@@ -10,14 +10,29 @@ namespace FancyStoreDemo.DataRepositories.InMemory
 	{
 	public class InMemoryStoreRepository : IStoreRepository
 		{
-		private List<Product> Products { get; set; }
+		private Dictionary<int, Product> Products { get; set; }
 
 		public void Initialize()
 			{
 			}
 		public Product GetProductById(int id)
 			{
-			return Products.Where(p => p.Id == id).Single();
+			return Products[id];
+			}
+
+		public void AddNewProduct(Product product)
+			{
+			Products.Add(product.Id, product);
+			}
+
+		public void UpdateProduct(Product product)
+			{
+			Products[product.Id] = product;
+			}
+
+		public void DeleteProduct(int id)
+			{
+			Products.Remove(id);
 			}
 		}
 	}

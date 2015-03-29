@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FancyStoreDemo.DataReposito
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FancyStoreDemo.DataRepositories.Mongo", "FancyStoreDemo.DataRepositories.Mongo\FancyStoreDemo.DataRepositories.Mongo.csproj", "{421FCDD7-EC4C-4A46-A35A-7D92DCB48906}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FancyStoreDemo.DataRepositories.AppDataFiles", "FancyStoreDemo.DataRepositories.AppDataFiles\FancyStoreDemo.DataRepositories.AppDataFiles.csproj", "{E358ECFF-114E-475E-B990-D26DEFBC497D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FancyStoreDemo.DataRepositories.InMemory", "FancyStoreDemo.DataRepositories.InMemory\FancyStoreDemo.DataRepositories.InMemory.csproj", "{D31B149F-5EE2-4177-9445-A81FDC77EAF3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{421FCDD7-EC4C-4A46-A35A-7D92DCB48906}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{421FCDD7-EC4C-4A46-A35A-7D92DCB48906}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{421FCDD7-EC4C-4A46-A35A-7D92DCB48906}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E358ECFF-114E-475E-B990-D26DEFBC497D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E358ECFF-114E-475E-B990-D26DEFBC497D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E358ECFF-114E-475E-B990-D26DEFBC497D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E358ECFF-114E-475E-B990-D26DEFBC497D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D31B149F-5EE2-4177-9445-A81FDC77EAF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D31B149F-5EE2-4177-9445-A81FDC77EAF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D31B149F-5EE2-4177-9445-A81FDC77EAF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D31B149F-5EE2-4177-9445-A81FDC77EAF3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

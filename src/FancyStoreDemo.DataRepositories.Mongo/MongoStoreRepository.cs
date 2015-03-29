@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using FancyStoreDemo.DataRepositories.Common;
 using FancyStoreDemo.Models;
 using MongoDB.Driver;
+using MongoDB.Driver.Builders;
 using MongoDB.Driver.Linq;
 
 
@@ -31,5 +32,23 @@ namespace FancyStoreDemo.DataRepositories.Mongo
 			var db = client.GetServer().GetDatabase("FancyStore");
 			return db.GetCollection<Product>("Products").AsQueryable<Product>().Where(p => p.Id == id).Single();
 			}
+
+		public void AddNewProduct(Product product)
+			{
+			var client = new MongoClient(ConnectionString);
+			var db = client.GetServer().GetDatabase("FancyStore");
+			db.GetCollection<Product>("Products").Insert(product);
+			}
+
+		public void UpdateProduct(Product product)
+			{
+			var client = new MongoClient(ConnectionString);
+			var db = client.GetServer().GetDatabase("FancyStore");
+			db.GetCollection<Product>("Products").Save(product);
+			}
+
+		public void DeleteProduct(int id) { var client = new MongoClient(ConnectionString);
+			var db = client.GetServer().GetDatabase("FancyStore");
+			db.GetCollection<Product>("Products").Remove(Query<Product>.EQ(p => p.Id, id));}
 		}
 	}
