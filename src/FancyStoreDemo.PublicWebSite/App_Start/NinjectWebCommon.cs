@@ -18,6 +18,7 @@ namespace FancyStoreDemo.PublicWebSite.App_Start
 	using System.Web.Hosting;
 	using FancyStoreDemo.DataRepositories.Xml;
 	using FancyStoreDemo.DataRepositories.RavenDB;
+	using FancyStoreDemo.DataRepositories.MSSQL;
 
 	public static class NinjectWebCommon
 		{
@@ -29,13 +30,23 @@ namespace FancyStoreDemo.PublicWebSite.App_Start
 			{
 			//new JsonStoreRepository(HostingEnvironment.MapPath("~/App_Data")).Initialize();
 			//kernel.Bind<IStoreRepository>().ToMethod(c => new JsonStoreRepository(HostingEnvironment.MapPath("~/App_Data")));
+
 			//new XmlStoreRepository(HostingEnvironment.MapPath("~/App_Data")).Initialize();
 			//kernel.Bind<IStoreRepository>().ToMethod(c => new XmlStoreRepository(HostingEnvironment.MapPath("~/App_Data")));
-			kernel.Bind<IStoreRepository>().ToMethod(c => new RavenStoreRepository(HostingEnvironment.MapPath("~/App_Data/RavenDB"))).InSingletonScope();
-			//kernel.Bind<IStoreRepository>().To<InMemoryStoreRepository>().InSingletonScope();
+
+			//kernel.Bind<IStoreRepository>().ToMethod(c => new RavenStoreRepository(HostingEnvironment.MapPath("~/App_Data/FancyStoreRaven"))).InSingletonScope();
+			
+			kernel.Bind<IStoreRepository>().To<InMemoryStoreRepository>().InSingletonScope();
+			
 			//kernel.Bind<IStoreRepository>().ToMethod(c => new MongoStoreRepository(ConfigurationManager.ConnectionStrings["MongoDB"].ConnectionString));
+			
+			//new MsSqlStoreRepository(ConfigurationManager.ConnectionStrings["MsSql"].ConnectionString).Initialize();
+			//kernel.Bind<IStoreRepository>().ToMethod(c => new MsSqlStoreRepository(ConfigurationManager.ConnectionStrings["MsSql"].ConnectionString));
+
+
 			//new OracleStoreRepository(ConfigurationManager.ConnectionStrings["Oracle"].ConnectionString).Initialize();
 			//kernel.Bind<IStoreRepository>().ToMethod(c => new OracleStoreRepository(ConfigurationManager.ConnectionStrings["Oracle"].ConnectionString));
+			
 			//new SqlLiteStoreRepository(ConfigurationManager.ConnectionStrings["SQLite"].ConnectionString).Initialize();
 			//kernel.Bind<IStoreRepository>().ToMethod(c => new SqlLiteStoreRepository(ConfigurationManager.ConnectionStrings["SQLite"].ConnectionString));
 			}

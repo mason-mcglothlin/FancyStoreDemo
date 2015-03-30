@@ -273,6 +273,10 @@
       <Project>{421fcdd7-ec4c-4a46-a35a-7d92dcb48906}</Project>
       <Name>FancyStoreDemo.DataRepositories.Mongo</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FancyStoreDemo.DataRepositories.MSSQL\FancyStoreDemo.DataRepositories.MSSQL.csproj">
+      <Project>{4e7c2f17-09bc-4ac5-b00f-83e6eccd6ad1}</Project>
+      <Name>FancyStoreDemo.DataRepositories.MSSQL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FancyStoreDemo.DataRepositories.Oracle\FancyStoreDemo.DataRepositories.Oracle.csproj">
       <Project>{e0e0113f-8dfa-4772-83d6-522122eea79d}</Project>
       <Name>FancyStoreDemo.DataRepositories.Oracle</Name>
