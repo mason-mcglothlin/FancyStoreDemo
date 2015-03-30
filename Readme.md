@@ -6,8 +6,8 @@ Currently, any of the following storage mechanisms can be used:
  - SQLite
  - Loose JSON files
  - MongoDB
+ - RavenDb
+ - Loose XML files
  - Oracle (untested)
  - MS SQL Server (planned)
- - RavenDb (planned)
- - Loose XML files
  - MySQL (planned)

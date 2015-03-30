@@ -277,6 +277,10 @@
       <Project>{e0e0113f-8dfa-4772-83d6-522122eea79d}</Project>
       <Name>FancyStoreDemo.DataRepositories.Oracle</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FancyStoreDemo.DataRepositories.RavenDB\FancyStoreDemo.DataRepositories.RavenDB.csproj">
+      <Project>{c3f67213-065d-4be1-a9c2-4f9a14740cfa}</Project>
+      <Name>FancyStoreDemo.DataRepositories.RavenDB</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FancyStoreDemo.DataRepositories.SqlLite\FancyStoreDemo.DataRepositories.SqlLite.csproj">
       <Project>{a5cb12cf-1a29-4387-8836-b90a0c5c0ec0}</Project>
       <Name>FancyStoreDemo.DataRepositories.SqlLite</Name>

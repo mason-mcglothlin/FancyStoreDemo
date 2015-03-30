@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FancyStoreDemo.PublicWebSit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FancyStoreDemo.DataRepositories.Xml", "FancyStoreDemo.DataRepositories.Xml\FancyStoreDemo.DataRepositories.Xml.csproj", "{8227EF84-D642-407E-973D-82C1A1A088FA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FancyStoreDemo.DataRepositories.RavenDB", "FancyStoreDemo.DataRepositories.RavenDB\FancyStoreDemo.DataRepositories.RavenDB.csproj", "{C3F67213-065D-4BE1-A9C2-4F9A14740CFA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{8227EF84-D642-407E-973D-82C1A1A088FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8227EF84-D642-407E-973D-82C1A1A088FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8227EF84-D642-407E-973D-82C1A1A088FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3F67213-065D-4BE1-A9C2-4F9A14740CFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3F67213-065D-4BE1-A9C2-4F9A14740CFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3F67213-065D-4BE1-A9C2-4F9A14740CFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3F67213-065D-4BE1-A9C2-4F9A14740CFA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
