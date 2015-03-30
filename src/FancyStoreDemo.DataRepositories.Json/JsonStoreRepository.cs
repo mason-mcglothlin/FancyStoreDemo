@@ -4,28 +4,27 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web;
 using FancyStoreDemo.DataRepositories.Common;
 using FancyStoreDemo.Models;
 using Newtonsoft.Json;
 
 namespace FancyStoreDemo.DataRepositories.AppDataFiles
 	{
-	public class AppDataFilesStoreRepository : IStoreRepository
+	public class JsonStoreRepository : IStoreRepository
 		{
 		private string BaseAppDataPath { get; set; }
 		private const string ProductsFolderName = "Products";
-		public AppDataFilesStoreRepository()
+		public JsonStoreRepository(string baseAppDataPath)
 			{
-			BaseAppDataPath = HttpContext.Current.Server.MapPath("~/App_Data");
+			BaseAppDataPath = baseAppDataPath;
+			}
+		public void Initialize()
+			{
 			var productsFolder = Path.Combine(BaseAppDataPath, ProductsFolderName);
 			if (!Directory.Exists(productsFolder))
 				{
 				Directory.CreateDirectory(productsFolder);
 				}
-			}
-		public void Initialize()
-			{
 			}
 		public Product GetProductById(int id)
 			{
@@ -45,7 +44,7 @@ namespace FancyStoreDemo.DataRepositories.AppDataFiles
 			{
 			var folder = Path.Combine(BaseAppDataPath, ProductsFolderName);
 			var products = new List<Product>();
-			foreach (var file in Directory.EnumerateFiles(folder))
+			foreach (var file in Directory.EnumerateFiles(folder, "*.json"))
 				{
 				var json = File.ReadAllText(file);
 				var product = JsonConvert.DeserializeObject<Product>(json);

@@ -15,6 +15,8 @@ namespace FancyStoreDemo.PublicWebSite.App_Start
 	using Ninject;
 	using Ninject.Web.Common;
 	using System.Configuration;
+	using System.Web.Hosting;
+	using FancyStoreDemo.DataRepositories.Xml;
 
 	public static class NinjectWebCommon
 		{
@@ -24,8 +26,11 @@ namespace FancyStoreDemo.PublicWebSite.App_Start
 		/// <param name="kernel">The kernel.</param>
 		private static void RegisterServices(IKernel kernel)
 			{
-			//kernel.Bind<IStoreRepository>().To<AppDataFilesStoreRepository>();
-			kernel.Bind<IStoreRepository>().To<InMemoryStoreRepository>().InSingletonScope();
+			//new JsonStoreRepository(HostingEnvironment.MapPath("~/App_Data")).Initialize();
+			//kernel.Bind<IStoreRepository>().ToMethod(c => new JsonStoreRepository(HostingEnvironment.MapPath("~/App_Data")));
+			new XmlStoreRepository(HostingEnvironment.MapPath("~/App_Data")).Initialize();
+			kernel.Bind<IStoreRepository>().ToMethod(c => new XmlStoreRepository(HostingEnvironment.MapPath("~/App_Data")));
+			//kernel.Bind<IStoreRepository>().To<InMemoryStoreRepository>().InSingletonScope();
 			//kernel.Bind<IStoreRepository>().ToMethod(c => new MongoStoreRepository(ConfigurationManager.ConnectionStrings["MongoDB"].ConnectionString));
 			//new OracleStoreRepository(ConfigurationManager.ConnectionStrings["Oracle"].ConnectionString).Initialize();
 			//kernel.Bind<IStoreRepository>().ToMethod(c => new OracleStoreRepository(ConfigurationManager.ConnectionStrings["Oracle"].ConnectionString));

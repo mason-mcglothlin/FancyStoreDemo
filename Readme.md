@@ -9,5 +9,5 @@ Currently, any of the following storage mechanisms can be used:
  - Oracle (untested)
  - MS SQL Server (planned)
  - RavenDb (planned)
- - Loose XML files (planned)
+ - Loose XML files
  - MySQL (planned)

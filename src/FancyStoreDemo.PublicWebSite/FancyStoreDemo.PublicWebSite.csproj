@@ -257,9 +257,9 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FancyStoreDemo.DataRepositories.AppDataFiles\FancyStoreDemo.DataRepositories.AppDataFiles.csproj">
+    <ProjectReference Include="..\FancyStoreDemo.DataRepositories.Json\FancyStoreDemo.DataRepositories.Json.csproj">
       <Project>{e358ecff-114e-475e-b990-d26defbc497d}</Project>
-      <Name>FancyStoreDemo.DataRepositories.AppDataFiles</Name>
+      <Name>FancyStoreDemo.DataRepositories.Json</Name>
     </ProjectReference>
     <ProjectReference Include="..\FancyStoreDemo.DataRepositories.Common\FancyStoreDemo.DataRepositories.Common.csproj">
       <Project>{8795297d-91c9-4889-bea8-5f72af3e591e}</Project>
@@ -280,6 +280,10 @@
     <ProjectReference Include="..\FancyStoreDemo.DataRepositories.SqlLite\FancyStoreDemo.DataRepositories.SqlLite.csproj">
       <Project>{a5cb12cf-1a29-4387-8836-b90a0c5c0ec0}</Project>
       <Name>FancyStoreDemo.DataRepositories.SqlLite</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FancyStoreDemo.DataRepositories.Xml\FancyStoreDemo.DataRepositories.Xml.csproj">
+      <Project>{8227ef84-d642-407e-973d-82c1a1a088fa}</Project>
+      <Name>FancyStoreDemo.DataRepositories.Xml</Name>
     </ProjectReference>
     <ProjectReference Include="..\FancyStoreDemo.Models\FancyStoreDemo.Models.csproj">
       <Project>{5cef7972-4c8f-4b07-9ac7-91288ec57e76}</Project>
