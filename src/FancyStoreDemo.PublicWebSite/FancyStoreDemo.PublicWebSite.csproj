@@ -285,6 +285,10 @@
       <Project>{c3f67213-065d-4be1-a9c2-4f9a14740cfa}</Project>
       <Name>FancyStoreDemo.DataRepositories.RavenDB</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FancyStoreDemo.DataRepositories.Redis\FancyStoreDemo.DataRepositories.Redis.csproj">
+      <Project>{3a0f93bc-04f5-4cb6-8f3a-028659213d83}</Project>
+      <Name>FancyStoreDemo.DataRepositories.Redis</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FancyStoreDemo.DataRepositories.SqlLite\FancyStoreDemo.DataRepositories.SqlLite.csproj">
       <Project>{a5cb12cf-1a29-4387-8836-b90a0c5c0ec0}</Project>
       <Name>FancyStoreDemo.DataRepositories.SqlLite</Name>

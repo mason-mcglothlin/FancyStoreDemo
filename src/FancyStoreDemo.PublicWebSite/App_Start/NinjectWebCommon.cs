@@ -19,6 +19,7 @@ namespace FancyStoreDemo.PublicWebSite.App_Start
 	using FancyStoreDemo.DataRepositories.Xml;
 	using FancyStoreDemo.DataRepositories.RavenDB;
 	using FancyStoreDemo.DataRepositories.MSSQL;
+	using FancyStoreDemo.DataRepositories.Redis;
 
 	public static class NinjectWebCommon
 		{
@@ -35,18 +36,20 @@ namespace FancyStoreDemo.PublicWebSite.App_Start
 			//kernel.Bind<IStoreRepository>().ToMethod(c => new XmlStoreRepository(HostingEnvironment.MapPath("~/App_Data")));
 
 			//kernel.Bind<IStoreRepository>().ToMethod(c => new RavenStoreRepository(HostingEnvironment.MapPath("~/App_Data/FancyStoreRaven"))).InSingletonScope();
-			
-			kernel.Bind<IStoreRepository>().To<InMemoryStoreRepository>().InSingletonScope();
-			
+
+			//kernel.Bind<IStoreRepository>().To<InMemoryStoreRepository>().InSingletonScope();
+
+			kernel.Bind<IStoreRepository>().ToMethod(c => new RedisStoreRepository(ConfigurationManager.ConnectionStrings["Redis"].ConnectionString)).InSingletonScope();
+
 			//kernel.Bind<IStoreRepository>().ToMethod(c => new MongoStoreRepository(ConfigurationManager.ConnectionStrings["MongoDB"].ConnectionString));
-			
+
 			//new MsSqlStoreRepository(ConfigurationManager.ConnectionStrings["MsSql"].ConnectionString).Initialize();
 			//kernel.Bind<IStoreRepository>().ToMethod(c => new MsSqlStoreRepository(ConfigurationManager.ConnectionStrings["MsSql"].ConnectionString));
 
 
 			//new OracleStoreRepository(ConfigurationManager.ConnectionStrings["Oracle"].ConnectionString).Initialize();
 			//kernel.Bind<IStoreRepository>().ToMethod(c => new OracleStoreRepository(ConfigurationManager.ConnectionStrings["Oracle"].ConnectionString));
-			
+
 			//new SqlLiteStoreRepository(ConfigurationManager.ConnectionStrings["SQLite"].ConnectionString).Initialize();
 			//kernel.Bind<IStoreRepository>().ToMethod(c => new SqlLiteStoreRepository(ConfigurationManager.ConnectionStrings["SQLite"].ConnectionString));
 			}

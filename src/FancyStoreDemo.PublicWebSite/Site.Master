@@ -15,6 +15,7 @@
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
+    <meta name="description" content="Site for demonstrating data storage mechanisms in ASP.NET." />
 </head>
 <body>
     <form runat="server">
