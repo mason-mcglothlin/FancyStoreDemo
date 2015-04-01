@@ -34,6 +34,23 @@ namespace FancyStoreDemo.PublicWebSite
 			bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
 							"~/Scripts/modernizr-*"));
 
+			bundles.Add(new ScriptBundle("~/bundles/noty").Include(
+				"~/Scripts/noty/jquery.noty.js",
+				"~/Scripts/noty/themes/default.js",
+				"~/Scripts/noty/layouts/bottom.js",
+				"~/Scripts/noty/layouts/bottomCenter.js",
+				"~/Scripts/noty/layouts/bottomLeft.js",
+				"~/Scripts/noty/layouts/bottomRight.js",
+				"~/Scripts/noty/layouts/center.js",
+				"~/Scripts/noty/layouts/centerLeft.js",
+				"~/Scripts/noty/layouts/centerRight.js",
+				"~/Scripts/noty/layouts/inline.js",
+				"~/Scripts/noty/layouts/top.js",
+				"~/Scripts/noty/layouts/topCenter.js",
+				"~/Scripts/noty/layouts/topLeft.js",
+				"~/Scripts/noty/layouts/topRight.js"
+			));
+
 			ScriptManager.ScriptResourceMapping.AddDefinition(
 				"respond",
 				new ScriptResourceDefinition

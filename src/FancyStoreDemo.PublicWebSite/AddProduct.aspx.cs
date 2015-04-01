@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using FancyStoreDemo.DataRepositories.Common;
 using FancyStoreDemo.Models;
 using Ninject;
+using SharpNoty;
 
 namespace FancyStoreDemo.PublicWebSite
 	{
@@ -30,6 +31,12 @@ namespace FancyStoreDemo.PublicWebSite
 				Price = Double.Parse(PriceTB.Text)
 			};
 			Repo.AddNewProduct(product);
+			ClearForm();
+			Page.AddNoty(new Noty("Product added.", MessageType.success));
+			}
+
+		protected void ClearForm()
+			{
 			IdTB.Text = "";
 			NameTB.Text = "";
 			DescriptionTB.Text = "";
