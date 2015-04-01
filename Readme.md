@@ -21,7 +21,7 @@ Planned
 
 Clone the repository, open `src/FancyStoreDemo.sln` and run the solution. Navigate to /Products.
 
-By in memory data storage is used. This can be changed by opening `src/FancyStoreDemo.PublicWebSite/App_Start/NinjectWebCommon.cs` and modifying the bindings in `RegisterServices()`.
+By in memory data storage is used. This can be changed by opening `src/FancyStoreDemo.PublicWebSite/web.config` and modifying the `DataStorageType` app setting. A list of value values are in `src/FancyStoreDemo.PublicWebSite/App_Start/NinjectWebCommon.cs`.
 
 ## Lessons Learned
 In memory storage is the cheapest and fastest, although with the obvious caveat that the data goes away when your app shuts down. But in memory storage is handy for unit testing.

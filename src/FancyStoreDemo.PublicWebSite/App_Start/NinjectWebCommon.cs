@@ -29,29 +29,56 @@ namespace FancyStoreDemo.PublicWebSite.App_Start
 		/// <param name="kernel">The kernel.</param>
 		private static void RegisterServices(IKernel kernel)
 			{
-			//new JsonStoreRepository(HostingEnvironment.MapPath("~/App_Data")).Initialize();
-			//kernel.Bind<IStoreRepository>().ToMethod(c => new JsonStoreRepository(HostingEnvironment.MapPath("~/App_Data")));
+			var storageType = ConfigurationManager.AppSettings["DataStorageType"];
+			switch (storageType)
+				{
+				case "JSON":
+				new JsonStoreRepository(HostingEnvironment.MapPath("~/App_Data")).Initialize();
+				kernel.Bind<IStoreRepository>().ToMethod(c => new JsonStoreRepository(HostingEnvironment.MapPath("~/App_Data")));
+				break;
 
-			//new XmlStoreRepository(HostingEnvironment.MapPath("~/App_Data")).Initialize();
-			//kernel.Bind<IStoreRepository>().ToMethod(c => new XmlStoreRepository(HostingEnvironment.MapPath("~/App_Data")));
+				case "XML":
+				new XmlStoreRepository(HostingEnvironment.MapPath("~/App_Data")).Initialize();
+				kernel.Bind<IStoreRepository>().ToMethod(c => new XmlStoreRepository(HostingEnvironment.MapPath("~/App_Data")));
+				break;
 
-			//kernel.Bind<IStoreRepository>().ToMethod(c => new RavenStoreRepository(HostingEnvironment.MapPath("~/App_Data/FancyStoreRaven"))).InSingletonScope();
+				case "RavenDB":
+				kernel.Bind<IStoreRepository>().ToMethod(c => new RavenStoreRepository(HostingEnvironment.MapPath("~/App_Data/FancyStoreRaven"))).InSingletonScope();
+				break;
 
-			//kernel.Bind<IStoreRepository>().To<InMemoryStoreRepository>().InSingletonScope();
+				case "InMemory":
+				kernel.Bind<IStoreRepository>().To<InMemoryStoreRepository>().InSingletonScope();
+				break;
 
-			kernel.Bind<IStoreRepository>().ToMethod(c => new RedisStoreRepository(ConfigurationManager.ConnectionStrings["Redis"].ConnectionString)).InSingletonScope();
+				case "Redis":
+				kernel.Bind<IStoreRepository>().ToMethod(c => new RedisStoreRepository(ConfigurationManager.ConnectionStrings["Redis"].ConnectionString)).InSingletonScope();
+				break;
 
-			//kernel.Bind<IStoreRepository>().ToMethod(c => new MongoStoreRepository(ConfigurationManager.ConnectionStrings["MongoDB"].ConnectionString));
+				case "MongoDB":
+				kernel.Bind<IStoreRepository>().ToMethod(c => new MongoStoreRepository(ConfigurationManager.ConnectionStrings["MongoDB"].ConnectionString));
+				break;
 
-			//new MsSqlStoreRepository(ConfigurationManager.ConnectionStrings["MsSql"].ConnectionString).Initialize();
-			//kernel.Bind<IStoreRepository>().ToMethod(c => new MsSqlStoreRepository(ConfigurationManager.ConnectionStrings["MsSql"].ConnectionString));
+				case "MSSQL":
+				new MsSqlStoreRepository(ConfigurationManager.ConnectionStrings["MsSql"].ConnectionString).Initialize();
+				kernel.Bind<IStoreRepository>().ToMethod(c => new MsSqlStoreRepository(ConfigurationManager.ConnectionStrings["MsSql"].ConnectionString));
+				break;
 
+				case "Oracle":
+				new OracleStoreRepository(ConfigurationManager.ConnectionStrings["Oracle"].ConnectionString).Initialize();
+				kernel.Bind<IStoreRepository>().ToMethod(c => new OracleStoreRepository(ConfigurationManager.ConnectionStrings["Oracle"].ConnectionString));
+				break;
 
-			//new OracleStoreRepository(ConfigurationManager.ConnectionStrings["Oracle"].ConnectionString).Initialize();
-			//kernel.Bind<IStoreRepository>().ToMethod(c => new OracleStoreRepository(ConfigurationManager.ConnectionStrings["Oracle"].ConnectionString));
+				case "SQLite":
+				new SqlLiteStoreRepository(ConfigurationManager.ConnectionStrings["SQLite"].ConnectionString).Initialize();
+				kernel.Bind<IStoreRepository>().ToMethod(c => new SqlLiteStoreRepository(ConfigurationManager.ConnectionStrings["SQLite"].ConnectionString));
+				break;
 
-			//new SqlLiteStoreRepository(ConfigurationManager.ConnectionStrings["SQLite"].ConnectionString).Initialize();
-			//kernel.Bind<IStoreRepository>().ToMethod(c => new SqlLiteStoreRepository(ConfigurationManager.ConnectionStrings["SQLite"].ConnectionString));
+				case "":
+				throw new ApplicationException("Missing DataStorageType app setting.");
+
+				default:
+				throw new ApplicationException(String.Format("Unknown data storage type {0}. Verify the DataStorageType app setting is a valid value.", storageType));
+				}
 			}
 
 		#region Boilerplate Ninject
