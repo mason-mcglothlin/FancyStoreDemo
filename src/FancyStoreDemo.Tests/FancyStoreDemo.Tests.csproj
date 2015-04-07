@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FC8B0660-B2BF-4CE5-A3DC-8CA98CC7600A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FancyStoreDemo.Tests</RootNamespace>
+    <AssemblyName>FancyStoreDemo.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <Choose>
+    <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+  <ItemGroup>
+    <Compile Include="UnitTest1.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FancyStoreDemo.DataRepositories.Common\FancyStoreDemo.DataRepositories.Common.csproj">
+      <Project>{8795297d-91c9-4889-bea8-5f72af3e591e}</Project>
+      <Name>FancyStoreDemo.DataRepositories.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FancyStoreDemo.DataRepositories.InMemory\FancyStoreDemo.DataRepositories.InMemory.csproj">
+      <Project>{d31b149f-5ee2-4177-9445-a81fdc77eaf3}</Project>
+      <Name>FancyStoreDemo.DataRepositories.InMemory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FancyStoreDemo.DataRepositories.Json\FancyStoreDemo.DataRepositories.Json.csproj">
+      <Project>{e358ecff-114e-475e-b990-d26defbc497d}</Project>
+      <Name>FancyStoreDemo.DataRepositories.Json</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FancyStoreDemo.DataRepositories.Mongo\FancyStoreDemo.DataRepositories.Mongo.csproj">
+      <Project>{421fcdd7-ec4c-4a46-a35a-7d92dcb48906}</Project>
+      <Name>FancyStoreDemo.DataRepositories.Mongo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FancyStoreDemo.DataRepositories.MSSQL\FancyStoreDemo.DataRepositories.MSSQL.csproj">
+      <Project>{4e7c2f17-09bc-4ac5-b00f-83e6eccd6ad1}</Project>
+      <Name>FancyStoreDemo.DataRepositories.MSSQL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FancyStoreDemo.DataRepositories.Oracle\FancyStoreDemo.DataRepositories.Oracle.csproj">
+      <Project>{e0e0113f-8dfa-4772-83d6-522122eea79d}</Project>
+      <Name>FancyStoreDemo.DataRepositories.Oracle</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FancyStoreDemo.DataRepositories.RavenDB\FancyStoreDemo.DataRepositories.RavenDB.csproj">
+      <Project>{c3f67213-065d-4be1-a9c2-4f9a14740cfa}</Project>
+      <Name>FancyStoreDemo.DataRepositories.RavenDB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FancyStoreDemo.DataRepositories.Redis\FancyStoreDemo.DataRepositories.Redis.csproj">
+      <Project>{3a0f93bc-04f5-4cb6-8f3a-028659213d83}</Project>
+      <Name>FancyStoreDemo.DataRepositories.Redis</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FancyStoreDemo.DataRepositories.SqlLite\FancyStoreDemo.DataRepositories.SqlLite.csproj">
+      <Project>{a5cb12cf-1a29-4387-8836-b90a0c5c0ec0}</Project>
+      <Name>FancyStoreDemo.DataRepositories.SqlLite</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FancyStoreDemo.DataRepositories.Xml\FancyStoreDemo.DataRepositories.Xml.csproj">
+      <Project>{8227ef84-d642-407e-973d-82c1a1a088fa}</Project>
+      <Name>FancyStoreDemo.DataRepositories.Xml</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FancyStoreDemo.Models\FancyStoreDemo.Models.csproj">
+      <Project>{5cef7972-4c8f-4b07-9ac7-91288ec57e76}</Project>
+      <Name>FancyStoreDemo.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -27,6 +27,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FancyStoreDemo.DataReposito
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FancyStoreDemo.DataRepositories.Redis", "FancyStoreDemo.DataRepositories.Redis\FancyStoreDemo.DataRepositories.Redis.csproj", "{3A0F93BC-04F5-4CB6-8F3A-028659213D83}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FancyStoreDemo.Tests", "FancyStoreDemo.Tests\FancyStoreDemo.Tests.csproj", "{FC8B0660-B2BF-4CE5-A3DC-8CA98CC7600A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FancyStoreDemo.DataRepositories.EntityFramework", "FancyStoreDemo.DataRepositories.EntityFramework\FancyStoreDemo.DataRepositories.EntityFramework.csproj", "{60F0423B-A137-4706-BA76-1EB4990B43D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FancyStoreDemo.DataRepositories.NHibernate", "FancyStoreDemo.DataRepositories.NHibernate\FancyStoreDemo.DataRepositories.NHibernate.csproj", "{3A00D0FD-A4C6-442C-B2D7-461C37A4D32A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +87,18 @@ Global
 		{3A0F93BC-04F5-4CB6-8F3A-028659213D83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A0F93BC-04F5-4CB6-8F3A-028659213D83}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A0F93BC-04F5-4CB6-8F3A-028659213D83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC8B0660-B2BF-4CE5-A3DC-8CA98CC7600A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC8B0660-B2BF-4CE5-A3DC-8CA98CC7600A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC8B0660-B2BF-4CE5-A3DC-8CA98CC7600A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC8B0660-B2BF-4CE5-A3DC-8CA98CC7600A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60F0423B-A137-4706-BA76-1EB4990B43D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60F0423B-A137-4706-BA76-1EB4990B43D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60F0423B-A137-4706-BA76-1EB4990B43D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60F0423B-A137-4706-BA76-1EB4990B43D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A00D0FD-A4C6-442C-B2D7-461C37A4D32A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A00D0FD-A4C6-442C-B2D7-461C37A4D32A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A00D0FD-A4C6-442C-B2D7-461C37A4D32A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A00D0FD-A4C6-442C-B2D7-461C37A4D32A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
