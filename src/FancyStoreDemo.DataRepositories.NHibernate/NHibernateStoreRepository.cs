@@ -11,31 +11,70 @@ namespace FancyStoreDemo.DataRepositories.NHibernate
 	{
 	public class NHibernateStoreRepository : IStoreRepository
 		{
-		public NHibernateStoreRepository()
-		{ }
+		private ISessionFactory sessionFactory { get; set; }
+		public NHibernateStoreRepository(string sqliteFileName)
+			{
+			SessionFactory.CreateSessionFactory(sqliteFileName);
+			}
 
 		public void Initialize() { throw new NotImplementedException(); }
 
 		public Product GetProductById(int id)
 			{
-			var sessionFactory = SessionFactory.CreateSessionFactory();
 			using (var session = sessionFactory.OpenSession())
 				{
-				using (var transaction = session.BeginTransaction())
-					{
-					var product = session.Get<Product>(id);
-					return product;
-					}
+				var product = session.Get<Product>(id);
+				return product;
 				}
 
 			}
 
-		public List<Product> GetAllProducts() { throw new NotImplementedException(); }
+		public List<Product> GetAllProducts()
+			{
+			using (var session = sessionFactory.OpenSession())
+				{
+				return session.CreateCriteria<Product>().List<Product>().ToList();
+				}
+			}
 
-		public void AddNewProduct(Product product) { throw new NotImplementedException(); }
+		public void AddNewProduct(Product product)
+			{
+			using (var session = sessionFactory.OpenSession())
+				{
+				using (var transaction = session.BeginTransaction())
+					{
+					session.Save(product, product.Id);
+					transaction.Commit();
+					}
+				}
+			}
 
-		public void UpdateProduct(Product product) { throw new NotImplementedException(); }
+		public void UpdateProduct(Product product)
+			{
+			using (var session = sessionFactory.OpenSession())
+				{
+				using (var transaction = session.BeginTransaction())
+					{
+					session.Update(product, product.Id);
+					transaction.Commit();
+					}
+				}
+			}
 
-		public void DeleteProduct(int id) { throw new NotImplementedException(); }
+		public void DeleteProduct(int id)
+			{
+			using (var session = sessionFactory.OpenSession())
+				{
+				using (var transaction = session.BeginTransaction())
+					{
+					var queryString = String.Format("delete {0} where id = :id", typeof(Product));
+					session.CreateQuery(queryString)
+						   .SetParameter("id", id)
+						   .ExecuteUpdate();
+
+					transaction.Commit();
+					}
+				}
+			}
 		}
 	}

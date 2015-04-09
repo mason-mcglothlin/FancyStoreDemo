@@ -14,30 +14,16 @@ namespace FancyStoreDemo.DataRepositories.NHibernate
 	{
 	public class SessionFactory
 		{
-		private static string DbFile = "nhibernate.db";
-
-		public static ISessionFactory CreateSessionFactory()
+		public static ISessionFactory CreateSessionFactory(string sqliteFileName)
 			{
 			return Fluently.Configure()
 			  .Database(
 				SQLiteConfiguration.Standard
-				  .UsingFile(DbFile)
+				  .UsingFile(sqliteFileName)
 			  )
 			  .Mappings(m =>
 				m.FluentMappings.AddFromAssemblyOf<ProductMap>())
-			  .ExposeConfiguration(BuildSchema)
 			  .BuildSessionFactory();
-			}
-		private static void BuildSchema(Configuration config)
-			{
-			// delete the existing db on each run
-			if (File.Exists(DbFile))
-				File.Delete(DbFile);
-
-			// this NHibernate tool takes a configuration (with mapping info in)
-			// and exports a database schema from it
-			new SchemaExport(config)
-			  .Create(false, true);
 			}
 		}
 	}

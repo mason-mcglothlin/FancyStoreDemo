@@ -8,14 +8,17 @@ Current Storage Mechanisms
  - MongoDB
  - RavenDb
  - Loose XML files
- - Oracle (untested)
+ - Oracle
+ - MS SQL Server
+ - NHibernate
+
 
 Planned
 
- - MS SQL Server
  - MySQL (planned)
  - Postgres (planned)
- - Redis 
+ - Redis (partially, poorly implemented)
+ - Azure DocumentDB
  
 ## Getting Started
 
